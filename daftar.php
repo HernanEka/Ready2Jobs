@@ -1,3 +1,14 @@
+<?php  
+
+include_once 'config.php';
+
+if (isset($_POST['daftar'])) {
+	
+	daftar($_POST);
+}
+
+?>
+
 <!doctype html>
 	<html lang="en">
 	<head>

@@ -1,3 +1,15 @@
+<?php  
+
+include_once 'config.php';
+
+if (isset($_POST['login'])) {
+	
+	login($_POST);
+}
+
+
+?>
+
 <!doctype html>
 	<html lang="en">
 	<head>
@@ -69,13 +81,13 @@
 						<a href="home.php" class="nav-link">Home</a>
 					</li>
 					<li class="nav-item">
-						<a href="job.php" class="nav-link">Job</a>
+						<a href="list.php?kategori=pekerjaan" class="nav-link">Job</a>
 					</li>
 					<li class="nav-item">
-						<a href="training.php" class="nav-link">Training</a>
+						<a href="list.php?kategori=training" class="nav-link">Training</a>
 					</li>
 					<li class="nav-item">
-						<a href="seminar.php" class="nav-link">Seminar</a>
+						<a href="list.php?kategori=seminar" class="nav-link">Seminar</a>
 					</li>
 					<li class="nav-item">
 						<a href="login.php" class="nav-link">Log in</a>
@@ -93,10 +105,14 @@
 					<hr>
 					<form action="" method="POST">
 						<div class="my-4">
-							<input type="email" name="email" id="email" class="form-control" placeholder="Email">
+							<input type="email" name="email" id="email" class="form-control" placeholder="Email" <?php if (isset($_COOKIE['email'])) {
+								echo 'value='.$_COOKIE['email'];
+							} ?>> 
 						</div>
 						<div class="my-4">
-							<input type="password" name="password" id="password" class="form-control" placeholder="Password">
+							<input type="password" name="password" id="password" class="form-control" placeholder="Password" <?php if (isset($_COOKIE['password'])) {
+								echo 'value='.$_COOKIE['password'];
+							} ?>>
 							<input type="checkbox" name="remember" id="remember" class="form-check-input">
 							<label for="remember" class="form-check-label">Remember Me</label>
 						</div>

@@ -2,14 +2,13 @@
 session_start();
 include 'admin_config.php';
 
-$sql = "SELECT * FROM daftar_kerja";
-$select = mysqli_query($conn,$sql);
 
 $i = 1;
 
+$sql = "SELECT * FROM pekerjaan";
+$select = mysqli_query($conn,$sql);
+
 ?>
-
-
 <!doctype html>
 	<html lang="en">
 	<head>
@@ -66,10 +65,10 @@ $i = 1;
 						<div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
 							<div class="accordion-body" >
 								<ul class="list-group">
-									<li class="list-group-item"><a href="home.php" class="tabel fw-bold">Tabel Pendaftaran Kerja</a></li>
+									<li class="list-group-item"><a href="home.php" class="tabel">Tabel Pendaftaran Kerja</a></li>
 									<li class="list-group-item"><a href="daftar_program.php" class="tabel">Tabel Pendaftaran Program</a></li>
-									<li class="list-group-item"><a href="pekerjaan.php" class="tabel">Tabel Pekerjaan</a></li>
-									<li class="list-group-item"><a href="program.php" class="tabel">Tabel Program</a></li>
+									<li class="list-group-item"><a href="pekerjaan.php" class="tabel fw-bold">Tabel Pekerjaan</a></li>
+									<li class="list-group-item"><a href="program.php" class="tabel ">Tabel Program</a></li>
 									<li class="list-group-item"><a href="user.php" class="tabel">Tabel User</a></li>
 								</ul>
 							</div>
@@ -82,17 +81,16 @@ $i = 1;
 			</div>
 			<div class="container p-5 mt-5">
 				<h1 class="display-3">Data Pendaftaran Kerja</h1>
+				<a href="tambah.php?kategori=pekerjaan" class="btn btn-primary mb-3">Tambah Data</a>
 				<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Nama Pendaftar</th>
-							<th scope="col">No Handphone Pendaftar</th>
-							<th scope="col">Email Pendaftar</th>
-							<th scope="col">Domisili Pendaftar</th>
-							<th scope="col">CV Pendaftar</th>
-							<th scope="col">ID Pekerjaan</th>
-							<th scope="col">ID User</th>
+							<th scope="col">Nama Pekerjaan</th>
+							<th scope="col">Perusahaan</th>
+							<th scope="col">Deskripsi</th>
+							<th scope="col">Kategori</th>
+							<th scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -100,12 +98,13 @@ $i = 1;
 							<tr>
 								<th scope="row"><?=$i++?></th>
 								<td><?=$key['nama']?></td>
-								<td><?=$key['no_hp']?></td>
-								<td><?=$key['email']?></td>
-								<td><?=$key['domisili']?></td>
-								<td><img src="../img/foto-cv/<?=$key['cv']?>" style="max-width: 50px;"></td>
-								<td><?=$key['job_id']?></td>
-								<td><?=$key['user_id']?></td>
+								<td><?=$key['perusahaan']?></td>
+								<td><?=$key['deskripsi']?></td>
+								<td><?=$key['kategori']?></td>
+								<td>
+									<a class="btn btn-warning" href="update.php?kategori=pekerjaan&id=<?=$key['id']?>">Edit</a>
+									<a class="btn btn-danger" href="admin_config.php?delete=pekerjaan&id=<?=$key['id']?>">Delete</a>
+								</td>
 							</tr>
 						<?php endforeach ?>
 					</tbody>

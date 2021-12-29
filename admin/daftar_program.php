@@ -2,7 +2,7 @@
 session_start();
 include 'admin_config.php';
 
-$sql = "SELECT * FROM daftar_kerja";
+$sql = "SELECT * FROM daftar_program";
 $select = mysqli_query($conn,$sql);
 
 $i = 1;
@@ -66,8 +66,8 @@ $i = 1;
 						<div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
 							<div class="accordion-body" >
 								<ul class="list-group">
-									<li class="list-group-item"><a href="home.php" class="tabel fw-bold">Tabel Pendaftaran Kerja</a></li>
-									<li class="list-group-item"><a href="daftar_program.php" class="tabel">Tabel Pendaftaran Program</a></li>
+									<li class="list-group-item"><a href="home.php" class="tabel ">Tabel Pendaftaran Kerja</a></li>
+									<li class="list-group-item"><a href="daftar_program.php" class="tabel fw-bold">Tabel Pendaftaran Program</a></li>
 									<li class="list-group-item"><a href="pekerjaan.php" class="tabel">Tabel Pekerjaan</a></li>
 									<li class="list-group-item"><a href="program.php" class="tabel">Tabel Program</a></li>
 									<li class="list-group-item"><a href="user.php" class="tabel">Tabel User</a></li>
@@ -89,8 +89,6 @@ $i = 1;
 							<th scope="col">Nama Pendaftar</th>
 							<th scope="col">No Handphone Pendaftar</th>
 							<th scope="col">Email Pendaftar</th>
-							<th scope="col">Domisili Pendaftar</th>
-							<th scope="col">CV Pendaftar</th>
 							<th scope="col">ID Pekerjaan</th>
 							<th scope="col">ID User</th>
 						</tr>
@@ -102,9 +100,7 @@ $i = 1;
 								<td><?=$key['nama']?></td>
 								<td><?=$key['no_hp']?></td>
 								<td><?=$key['email']?></td>
-								<td><?=$key['domisili']?></td>
-								<td><img src="../img/foto-cv/<?=$key['cv']?>" style="max-width: 50px;"></td>
-								<td><?=$key['job_id']?></td>
+								<td><?=$key['program_id']?></td>
 								<td><?=$key['user_id']?></td>
 							</tr>
 						<?php endforeach ?>
