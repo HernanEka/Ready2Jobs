@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2021 at 10:44 PM
+-- Generation Time: Dec 30, 2021 at 07:39 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -35,15 +35,17 @@ CREATE TABLE `daftar_kerja` (
   `domisili` varchar(255) DEFAULT NULL,
   `cv` varchar(255) DEFAULT NULL,
   `job_id` int(12) DEFAULT NULL,
-  `user_id` int(12) DEFAULT NULL
+  `user_id` int(12) DEFAULT NULL,
+  `hasil` varchar(255) DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `daftar_kerja`
 --
 
-INSERT INTO `daftar_kerja` (`id`, `nama`, `email`, `no_hp`, `domisili`, `cv`, `job_id`, `user_id`) VALUES
-(1, 'her', 'her@gmail.com', 123, 'purwokerto', '663079306_MBKM.png', 1, 2);
+INSERT INTO `daftar_kerja` (`id`, `nama`, `email`, `no_hp`, `domisili`, `cv`, `job_id`, `user_id`, `hasil`) VALUES
+(1, 'her', 'her@gmail.com', 123, 'purwokerto', '663079306_MBKM.png', 1, 2, 'Diterima'),
+(2, 'coba', 'coba@gmail.com', 2147483647, 'mars', '395516660_SS comvis EDE.PNG', 3, 2, 'Coba Lagi');
 
 -- --------------------------------------------------------
 
@@ -88,8 +90,7 @@ CREATE TABLE `pekerjaan` (
 INSERT INTO `pekerjaan` (`id`, `nama`, `perusahaan`, `deskripsi`, `kategori`) VALUES
 (1, 'Front-End Developer', 'PT Bella Belle', 'Pekerjaan untuk Front End Developer', 'Fulltime'),
 (2, 'Back-End Developer', 'PT Cinta Sejati', 'Mencari orang yang bisa menjadi pemersatu pasangan', 'Partime'),
-(3, 'isi isi doang', 'hehe', 'cuman isi doang', 'Fulltime'),
-(4, 'hehehehehehe', 'bercanda', 'hhehehehehehe', 'Fulltime');
+(3, 'isi isi doang', 'hehe', 'cuman isi doang', 'Fulltime');
 
 -- --------------------------------------------------------
 
@@ -184,7 +185,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `daftar_kerja`
 --
 ALTER TABLE `daftar_kerja`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `daftar_program`
