@@ -116,7 +116,7 @@ function daftarkerja($data)
 	$gambar = $rand."_".$filename;
 	move_uploaded_file($_FILES['cv']['tmp_name'], 'img/foto-cv/'.$gambar);
 
-	$insert = "INSERT INTO daftar_kerja VALUES('','$nama','$email', '$no_hp', '$domisili', '$gambar', '$job_id','$user_id') ";
+	$insert = "INSERT INTO daftar_kerja VALUES('','$nama','$email', '$no_hp', '$domisili', '$gambar', '$job_id','$user_id','') ";
 	mysqli_query($conn,$insert);
 
 

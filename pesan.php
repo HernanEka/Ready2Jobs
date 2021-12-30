@@ -128,15 +128,16 @@ $select2 = mysqli_query($conn,$sql2);
 
 		<section id="pesan">
 			<div class="container">
-				<h1 class="display-3">Data Pendaftaran Anda</h1>
+				<h1 class="display-3">Data Pendaftaran Kerja</h1>
 				<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">Jenis Pendaftaran</th>
-							<th scope="col">Nama</th>
-							<th scope="col">Judul Pendaftaran</th>
+							<th scope="col">Nama Pekerjaan</th>
+							<th scope="col">Nama Pendaftar</th>
+							<th scope="col">Kategori Pekerjaan</th>
 							<th scope="col">Status</th>
+							<th scope="col">Hasil</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -145,7 +146,7 @@ $select2 = mysqli_query($conn,$sql2);
 
 							$job_id = $key['job_id'];
 
-							$sql = "SELECT nama FROM pekerjaan WHERE id = '$job_id' ";
+							$sql = "SELECT * FROM pekerjaan WHERE id = '$job_id' ";
 							$select = mysqli_query($conn,$sql);
 
 							$pekerjaan = mysqli_fetch_assoc($select);
@@ -153,12 +154,37 @@ $select2 = mysqli_query($conn,$sql2);
 							 ?>
 							<tr>
 								<td><?=$i++?></td>
-								<td>Pekerjaan</td>
-								<td><?=$key['nama']?></td>
 								<td><?=$pekerjaan['nama']?></td>
+								<td><?=$key['nama']?></td>
+								<td><?=$pekerjaan['kategori']?></td>
 								<td>Berkas Terkirim</td>
+								<td>
+									<?php if ($key['hasil']==''): ?>
+										<p class="btn btn-secondary">Pending</p>
+									<?php endif ?>
+									<?php if ($key['hasil']=='Diterima'): ?>
+										<p class="btn btn-success"><?=$key['hasil']?></p>
+									<?php endif ?>
+									<?php if ($key['hasil']=='Coba Lagi'): ?>
+										<p class="btn btn-danger"><?=$key['hasil']?></p>
+									<?php endif ?>
+								</td>
 							</tr>
 						<?php endforeach ?>
+					</tbody>
+				</table>
+				<h1 class="display-3">Data Pendaftaran Program</h1>
+				<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nama Pekerjaan</th>
+							<th scope="col">Nama Pendaftar</th>
+							<th scope="col">Kategori Pekerjaan</th>
+							<th scope="col">Status</th>
+						</tr>
+					</thead>
+					<tbody>
 						<?php foreach ($select2 as $key): ?>
 							<?php 
 

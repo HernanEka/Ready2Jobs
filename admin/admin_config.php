@@ -152,6 +152,42 @@ function addpekerjaan($data)
 	header('Location:pekerjaan.php');
 }
 
+function updatepekerjaan($data)
+{
+	global $conn;
+
+	$id = $_GET['id'];
+
+	$nama = $data['nama'];
+	$perusahaan = $data['perusahaan'];
+	$deskripsi = $data['deskripsi'];
+	$kategori = $data['kategori'];
+
+
+
+	$update = "UPDATE pekerjaan SET nama =  '$nama', perusahaan =  '$perusahaan', deskripsi =  '$deskripsi', kategori = '$kategori' WHERE id = '$id'";
+	mysqli_query($conn,$update);
+
+	header('Location:pekerjaan.php');
+
+}
+
+function updatedaftar($data)
+{
+
+	global $conn;
+
+	$hasil = $data['hasil'];
+	$id = $_GET['id'];
+
+
+	$sql = "UPDATE daftar_kerja SET hasil = '$hasil' WHERE id = '$id' ";
+	mysqli_query($conn,$sql);
+
+	header('Location:home.php');
+
+}
+
 if (isset($_GET['delete'])) {
 	
 	$delete = $_GET['delete'];
@@ -163,6 +199,20 @@ if (isset($_GET['delete'])) {
 		mysqli_query($conn,$sql);
 
 		header('Location:user.php');
+	}
+
+	if ($delete == 'program') {
+		$sql = "DELETE FROM program WHERE id = '$id'";
+		mysqli_query($conn,$sql);
+
+		header('Location:program.php');
+	}
+
+	if ($delete == 'pekerjaan') {
+		$sql = "DELETE FROM pekerjaan WHERE id = '$id'";
+		mysqli_query($conn,$sql);
+
+		header('Location:pekerjaan.php');
 	}
 	
 }

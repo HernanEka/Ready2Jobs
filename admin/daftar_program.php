@@ -81,7 +81,7 @@ $i = 1;
 				</div>
 			</div>
 			<div class="container p-5 mt-5">
-				<h1 class="display-3">Data Pendaftaran Kerja</h1>
+				<h1 class="display-3">Data Pendaftaran Program</h1>
 				<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 					<thead>
 						<tr>

@@ -23,6 +23,16 @@ if (isset($_POST['program'])) {
 	updateprogram($_POST);
 }
 
+if (isset($_POST['daftar'])) {
+	
+	updatedaftar($_POST);
+}
+
+if (isset($_POST['pekerjaan'])) {
+	
+	updatepekerjaan($_POST);
+}
+
 ?>
 <!doctype html>
 	<html lang="en">
@@ -183,6 +193,62 @@ if (isset($_POST['program'])) {
 						</div>
 					</form>
 				<?php } ?>
+
+				<?php if ($kategori == 'pekerjaan') { 
+
+					$id = $_GET['id'];
+
+					$sql = "SELECT * FROM pekerjaan WHERE id = '$id' ";
+					$select = mysqli_query($conn,$sql);
+
+					$data = mysqli_fetch_assoc($select);
+
+					?>
+					<h1 class="display-3">Tambah Data Pekerjaan</h1>
+					<form action="" method="POST" class="col-md-4">
+						<div class="my-4">
+							<label for="nama" class="form-label">Nama Pekerjaan</label>
+							<input type="text" name="nama" id="nama" class="form-control" placeholder="Nama" value="<?=$data['nama']?>">
+						</div>
+						<div class="my-4">
+							<label for="perusahaan" class="form-label">Nama Perusahaan</label>
+							<input type="text" name="perusahaan" id="perusahaan" class="form-control" placeholder="Perusahaan" value="<?=$data['perusahaan']?>">
+						</div>
+						<div class="my-4">
+							<label for="deskripsi" class="form-label">Deskripsi Pekerjaan</label>
+							<textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi"><?=$data['deskripsi']?></textarea>
+						</div>
+						<div class="my-4">
+							<label for="kategori" class="form-label">Kategori Pekerjaan</label>
+							<select name="kategori" class="form-select">
+								<option value="" selected disabled hidden>Pilih Kategori</option>
+								<option value="Fulltime" <?php if ($data['kategori']=='Fulltime'): ?>
+									selected
+								<?php endif ?> >Fulltime</option>
+								<option value="Partime" <?php if ($data['kategori']=='Partime'): ?>
+									selected
+								<?php endif ?>>Partime</option>
+							</select>
+						</div>
+						<div class="my-4">
+							<button type="submit" name="pekerjaan" class="btn btn-primary px-4">Daftar</button>
+						</div>
+					</form>
+				<?php } ?>
+
+				<?php if ($kategori == 'daftar_kerja'): ?>
+					<h1 class="display-3">Ubah Hasil Pendaftaran</h1>
+					<form action="" method="POST" class="col-md-4">
+						<select name="hasil" class="form-select">
+							<option>Pending</option>
+							<option>Diterima</option>
+							<option>Coba Lagi</option>
+						</select>
+						<div class="my-4">
+							<button type="submit" name="daftar" class="btn btn-primary px-4">Daftar</button>
+						</div>
+					</form>
+				<?php endif ?>
 			</div>
 		</div>
 	</body>

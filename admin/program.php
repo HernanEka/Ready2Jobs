@@ -81,7 +81,7 @@ $select = mysqli_query($conn,$sql);
 				</div>
 			</div>
 			<div class="container p-5 mt-5">
-				<h1 class="display-3">Data Pendaftaran Program</h1>
+				<h1 class="display-3">Data Program</h1>
 				<a href="tambah.php?kategori=program" class="btn btn-primary mb-3">Tambah Data</a>
 				<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
 					<thead>

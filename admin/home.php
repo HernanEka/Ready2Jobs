@@ -93,6 +93,8 @@ $i = 1;
 							<th scope="col">CV Pendaftar</th>
 							<th scope="col">ID Pekerjaan</th>
 							<th scope="col">ID User</th>
+							<th scope="col">Hasil Daftar</th>
+							<th scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -106,6 +108,10 @@ $i = 1;
 								<td><img src="../img/foto-cv/<?=$key['cv']?>" style="max-width: 50px;"></td>
 								<td><?=$key['job_id']?></td>
 								<td><?=$key['user_id']?></td>
+								<td><?=$key['hasil']?></td>
+								<td>
+									<a class="btn btn-warning" href="update.php?kategori=daftar_kerja&id=<?=$key['id']?>">Edit</a>
+								</td>
 							</tr>
 						<?php endforeach ?>
 					</tbody>
